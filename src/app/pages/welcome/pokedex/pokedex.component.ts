@@ -16,6 +16,7 @@ export class PokedexComponent implements OnInit {
     let i = 0
     this.pokeapi.getPokemonList(`1017`, '0').subscribe((data: any) => {
       data.results.forEach((e: any) => {
+        let i = 0
         this.pokeapi.getPokemonByNameOrId(e.name).subscribe((data: any) => {
           this.pokemonList.push(
             {
@@ -25,9 +26,9 @@ export class PokedexComponent implements OnInit {
               types: data.types
             }
           )
-        })
-        this.pokemonList = this.pokemonList.sort((a: any, b: any) => {
-          return a.id - b.id
+          this.pokemonList = this.pokemonList.sort((a: any, b: any) => {
+            return a.id - b.id
+          })
         })
       });
     })

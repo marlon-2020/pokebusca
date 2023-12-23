@@ -16,6 +16,7 @@ import { TransitionComponent } from './pages/transition/transition.component';
 import { MenuMobileComponent } from './pages/menu-mobile/menu-mobile.component';
 import { MenuComputerComponent } from './pages/menu-computer/menu-computer.component';
 import { ArrayToStringPipe } from './pipes/array-to-string.pipe';
+import { PokemonDetailsComponent } from './pages/welcome/pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ArrayToStringPipe } from './pipes/array-to-string.pipe';
     TransitionComponent,
     MenuMobileComponent,
     MenuComputerComponent,
-    ArrayToStringPipe
+    ArrayToStringPipe,
+    PokemonDetailsComponent
   ],
   imports: [
     BrowserModule,
