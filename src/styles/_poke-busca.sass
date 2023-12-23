@@ -3,10 +3,12 @@
 @import 'animations'
 
 main
+    min-width: 300px
     padding: 20px 0
     height: calc( 100dvh - 120px )
     background: $blackDarker
     @include displayFlex(column, flex-start, center, 50px)
+    flex-wrap: nowrap
     .form-container
         @include displayFlex(column, center, center, 20px)
         .name-container
