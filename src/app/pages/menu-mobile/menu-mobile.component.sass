@@ -1,0 +1,58 @@
+@import 'mixins'
+@import 'variables'
+.menu-mobile
+    overflow: hidden
+    width: 60px
+    figure
+        @include displayFlex(column, center, center, 5px)
+        width: 60px
+        height: 60px
+        cursor: pointer
+        .line
+            width: 60px
+            height: 5px
+            background: white
+    .menu-container
+        width: 0
+        overflow: hidden
+        position: fixed
+        top: 0
+        right: 0
+        z-index: 10
+        transition: width 0.5s
+        height: 100dvh
+        background: $blackDarker
+        @include displayFlex(column, space-evenly, center, 0px)
+        figure
+            cursor: pointer
+            display: flex
+            position: absolute
+            top: 0px
+            right: 10px
+            div
+                height: 60px
+                width: 5px
+                background: white
+            div:nth-of-type(1)
+                transform: translateX(15px) rotate(45deg) 
+            div:nth-of-type(2)
+                transform: translateX(-15px) rotate(-45deg) 
+        a
+            font-size: 2rem
+            transition: transform 0.5s
+            width: 168px
+            text-align: center
+            &:hover
+                transform: scale(1.2)
+    .back-filter
+        cursor: pointer
+        background: rgba(0,0,0,0.4)
+        position: fixed
+        height: 100dvh
+        width: 100dvw
+        top: 0
+        left: 0
+        z-index: 5
+@media only screen and (min-width: 650px)
+    .menu-mobile
+        display: none

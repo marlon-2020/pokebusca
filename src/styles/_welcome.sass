@@ -1,0 +1,33 @@
+@import 'mixins'
+@import 'variables'
+@import 'animations'
+main
+    background: url('../assets/images/pokewall.png') center center 
+    height: 100dvh
+    @include displayFlex(column, space-between, center, 0px)
+    padding: 10dvh 0
+    .title-container
+        .title
+            font-family: pokemon
+            color: $blackLighter
+            font-size: 5rem
+    .btn-container
+        #enter
+            border: none
+            color: $blackLighter
+            width: 200px
+            height: 60px
+            background: $bege
+            font-family: pokemon
+            cursor: pointer
+            animation: btn 7s infinite alternate ease-in-out
+            font-size: 1.3rem
+            border-radius: 10px
+    .routes-container:host
+        display: none
+@media screen and (max-width: 450px)
+    main
+    
+        .title-container
+            .title
+                font-size: 3rem

@@ -1,0 +1,20 @@
+@import 'mixins'
+@import 'variables'
+@import 'animations'
+
+.background-container
+    position: fixed
+    left: 0
+    width: 100dvw
+    height: 50dvh
+    z-index: 30
+.background-container.top
+    top: -50vh
+    background: url('../assets/images/transition-top.png') center center no-repeat
+    background-size: cover
+    animation: transitionTopPage 1s linear
+.background-container.bottom
+    bottom: -50dvh
+    background: url('../assets/images/transition-bottom.png') center center no-repeat
+    background-size: cover
+    animation: transitionBottomPage 1s linear

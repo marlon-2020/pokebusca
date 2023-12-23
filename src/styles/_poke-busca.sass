@@ -1,0 +1,52 @@
+@import 'mixins'
+@import 'variables'
+@import 'animations'
+
+main
+    padding: 20px 0
+    height: calc( 100dvh - 120px )
+    background: $blackDarker
+    @include displayFlex(column, flex-start, center, 50px)
+    .form-container
+        @include displayFlex(column, center, center, 20px)
+        .name-container
+            @include displayFlex(row, center, center, 20px)
+            #value
+                width: 300px
+                height: 50px
+                border: none
+                border-radius: 50px
+                outline: none
+                padding: 0 20px
+                font-size: 2rem
+                color: $blackLighter
+                text-align: center
+    .card-container
+        @include displayFlex(column, center, center, 0px)
+        .card
+            @include displayFlex(column, space-between, center, 20px)     
+            @include card(350px, 400px, $red, 10px)
+            padding: 0 0 10px 0
+            overflow: hidden
+            figure  
+                width: 100%
+                background: white  
+                display: flex
+                justify-content: center
+                img
+                    width: 250px
+            h2, p
+                width: 350px
+                padding: 0 10px
+                color: $bege
+            h2
+                text-align: center
+                font-size: 2rem
+            p
+                text-align: center
+                font-size: 1.5rem
+            .non-content
+                @include displayFlex(row, center, center, 0px)
+                height: 100%
+                color: $bege
+                font-size: 2.5rem

@@ -1,0 +1,21 @@
+<app-transition></app-transition>
+<app-header></app-header>
+<main>
+    <section class="title-container">
+        <h1 class="title">POKEDEX</h1>
+    </section>
+    <section class="card-container">
+        <div class="card" *ngFor="let pokemon of pokemonList | paginate: { itemsPerPage: 12, currentPage: p}">
+            <figure>
+                <img src="{{ pokemon.url }}" alt="">
+            </figure>
+            <h2>{{ pokemon.name }}</h2>
+            <p>{{ pokemon.id }}</p>
+            <p>{{ pokemon.types | arrayToString }}</p>
+        </div>
+    </section>
+    <section>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </section>
+</main>
+<app-footer></app-footer>

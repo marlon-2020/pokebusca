@@ -1,0 +1,30 @@
+@import 'mixins'
+@import 'variables'
+@import 'animations'
+
+main
+    padding: 20px 0
+    @include displayFlex(column, flex-start, center, 20px)
+    background: $blackDarker
+    .title-container
+        .title
+            color: $bege
+            font-size: 3rem
+    .card-container
+        @include displayGrid(250px 250px 250px, center, center, 20px)
+        .card
+            @include displayFlex(column, space-between, center, 0)
+            @include card(250px, auto, $red, 10px)
+            padding: 0 0 10px 0
+            overflow: hidden
+            figure
+                width: 250px
+                background: white
+                img
+                    width: 250px
+            h2, p
+                color: $bege
+            h2
+                font-size: 2rem
+            p
+                font-size: 1.5rem

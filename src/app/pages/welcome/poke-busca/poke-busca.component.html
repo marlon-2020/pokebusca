@@ -1,0 +1,25 @@
+<app-transition></app-transition>
+<app-header></app-header>
+<main>
+    <section class="form-container">
+        <div class="name-container">
+            <input type="text" name="" id="value" placeholder="nome ou id" #input (keydown.enter)="find(input.value)">
+        </div>
+    </section>
+    <section class="card-container">
+        <div class="card" *ngIf="pokemon">
+            <figure>
+                <img src="{{ pokemon.url }}" alt="">
+            </figure>
+            <h2>Nome: {{ pokemon.name }}</h2>
+            <p>Nº: {{  pokemon.id }}</p>
+            <p>Tipo: <span>{{ pokemon.types | arrayToString }}</span></p>
+        </div>
+        <div class="card" *ngIf="!pokemon">
+            <div class="non-content">
+                Sem pokemon!
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>
