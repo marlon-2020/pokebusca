@@ -25,7 +25,7 @@ main
         @include displayFlex(column, center, center, 0px)
         .card
             @include displayFlex(column, space-between, center, 20px)     
-            @include card(350px, 400px, $red, 10px)
+            @include card(350px, auto, $red, 10px)
             padding: 0 0 10px 0
             overflow: hidden
             figure  
@@ -50,3 +50,14 @@ main
                 height: 100%
                 color: $bege
                 font-size: 2.5rem
+@media screen and (max-width: 360px)
+    main
+        .card-container
+            .card
+                @include card(300px, auto, $red, 10px)
+                figure
+                    width: 100%
+                    img
+                        width: 300px
+                h2, p
+                    width: 300px

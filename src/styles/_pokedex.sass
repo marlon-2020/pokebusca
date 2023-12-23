@@ -6,6 +6,7 @@ main
     padding: 20px 0
     @include displayFlex(column, flex-start, center, 20px)
     background: $blackDarker
+    min-width: 300px
     .title-container
         .title
             color: $bege
@@ -28,3 +29,12 @@ main
                 font-size: 2rem
             p
                 font-size: 1.5rem
+
+@media screen and (max-width: 850px)
+    main
+        .card-container
+            @include displayGrid(250px 250px, center, center, 20px)
+@media screen and (max-width: 560px)
+    main
+        .card-container
+            @include displayGrid(250px, center, center, 20px)
