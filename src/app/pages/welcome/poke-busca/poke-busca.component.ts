@@ -20,13 +20,11 @@ export class PokeBuscaComponent implements OnInit {
 
   ngOnInit(){
     account.get().then((data: any)=>{
-      console.log(data)
         this.user = {
         id: data.$id,
         email: data.email,
         name: data.name
       }
-      console.log(this.user)
     })
     .catch(()=>{
       this.user = null
@@ -56,7 +54,6 @@ export class PokeBuscaComponent implements OnInit {
   desconectar(){
     account.deleteSessions()
     .then(()=>{
-      console.log('oi')
       this.user = null
     })
   }

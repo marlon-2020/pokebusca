@@ -18,13 +18,11 @@ export class PokedexComponent implements OnInit {
   async ngOnInit() {
 
     account.get().then((data: any) => {
-      console.log(data)
       this.user = {
         id: data.$id,
         email: data.email,
         name: data.name
       }
-      console.log(this.user)
     })
       .catch(() => {
         this.user = null
@@ -49,13 +47,15 @@ export class PokedexComponent implements OnInit {
         },
         error: (error: any)=>{
           console.log(error)
-        },
-        complete: ()=>{
-          this.pokemonList = this.pokemonList.sort((a: any, b:any)=>{
-            return a.id - b.id
-          })
         }
       }
     )
+    this.pokemonList = await this.organiza()
+  }
+
+  async organiza(){
+    return this.pokemonList.sort((a: any, b:any)=>{
+      return a.id - b.id
+    })
   }
 }

@@ -14,7 +14,6 @@ export class UserContainerComponent {
   desconectar(){
     account.deleteSessions()
     .then(()=>{
-      console.log('oi')
       this.userInput = null
     })
   }
