@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { PokeBuscaComponent } from './pages/welcome/poke-busca/poke-busca.component';
 import { PokedexComponent } from './pages/welcome/pokedex/pokedex.component';
+import { LoginComponent } from './pages/welcome/login/login.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: 'login', component: LoginComponent
   },
   {
     path: '**', redirectTo: '/', pathMatch: 'full'

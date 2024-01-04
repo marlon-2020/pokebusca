@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,14 @@ import { MenuMobileComponent } from './pages/menu-mobile/menu-mobile.component';
 import { MenuComputerComponent } from './pages/menu-computer/menu-computer.component';
 import { ArrayToStringPipe } from './pipes/array-to-string.pipe';
 import { PokemonDetailsComponent } from './pages/welcome/pokemon-details/pokemon-details.component';
+import { LoginComponent } from './pages/welcome/login/login.component';
+import { SlideFormsDirective } from './directives/slide-forms.directive';
+import { UserContainerComponent } from './pages/user-container/user-container.component';
+
+export function tokenGetter() {
+  console.log('oi')
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -31,14 +40,24 @@ import { PokemonDetailsComponent } from './pages/welcome/pokemon-details/pokemon
     MenuMobileComponent,
     MenuComputerComponent,
     ArrayToStringPipe,
-    PokemonDetailsComponent
+    PokemonDetailsComponent,
+    LoginComponent,
+    SlideFormsDirective,
+    UserContainerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:4200/"],
+        disallowedRoutes: ["localhost:4200/login"]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

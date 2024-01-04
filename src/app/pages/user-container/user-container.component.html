@@ -1,0 +1,7 @@
+<div [className]="userInput ? 'visible':'invisible'" *ngIf="userInput">
+    <div class="user-details">
+        <p>Usuário: {{ userInput.name | titlecase }}</p>
+        <p>E-mail: {{ userInput.email }}</p>
+        <a (click)="desconectar()">desconectar</a>
+    </div>
+</div>

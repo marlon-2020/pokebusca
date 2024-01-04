@@ -1,0 +1,17 @@
+@import 'mixins'
+@import 'variables'
+@import 'animations'
+.visible
+    @include displayFlex(column, center, center, 5px)
+    @include card(fit-content, auto, $blackLighter, 10px)
+    position: fixed
+    bottom: 10px
+    left: 10px
+    padding: 7px
+    p,a
+        font-size: 1.3rem
+    a
+        cursor: pointer
+
+.invisible
+    display: none

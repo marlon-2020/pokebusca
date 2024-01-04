@@ -1,14 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokeApiService } from 'src/app/services/poke-api.service';
 import { Pokemon } from 'src/app/types/pokemon';
+import { account } from '../../../../lib/appwrite'
+import { User } from 'src/app/types/user';
+
 
 @Component({
   selector: 'app-poke-busca',
   templateUrl: './poke-busca.component.html',
   styleUrls: ['./poke-busca.component.sass']
 })
-export class PokeBuscaComponent {
-  constructor(private pokeapi: PokeApiService){}
+export class PokeBuscaComponent implements OnInit {
+
+  constructor(
+      private pokeapi: PokeApiService,
+    ){}
+
+  user: User|null = null
+
+  ngOnInit(){
+    account.get().then((data: any)=>{
+      console.log(data)
+        this.user = {
+        id: data.$id,
+        email: data.email,
+        name: data.name
+      }
+      console.log(this.user)
+    })
+    .catch(()=>{
+      this.user = null
+    })
+  }
 
   pokemon!: Pokemon
 
@@ -21,7 +44,6 @@ export class PokeBuscaComponent {
           url: info.sprites.other['official-artwork'].front_default,
           types: info.types
         }
-        console.log(this.pokemon)
       },
       error: (error: any)=>{
         if(error.status === 404){
@@ -31,5 +53,12 @@ export class PokeBuscaComponent {
     })
   }
 
+  desconectar(){
+    account.deleteSessions()
+    .then(()=>{
+      console.log('oi')
+      this.user = null
+    })
+  }
 
 }
