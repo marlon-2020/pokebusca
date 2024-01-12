@@ -8,10 +8,11 @@
     bottom: 10px
     left: 10px
     padding: 7px
-    p,a
+    p
         font-size: 1.3rem
-    a
-        cursor: pointer
-
-.invisible
-    display: none
+    .choices
+        @include displayFlex(row, space-evenly, center, 10px)
+        a
+            font-size: 1.3rem
+            cursor: pointer
+            text-decoration: underline

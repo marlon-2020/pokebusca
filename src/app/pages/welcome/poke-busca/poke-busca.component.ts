@@ -32,6 +32,7 @@ export class PokeBuscaComponent implements OnInit {
   }
 
   pokemon!: Pokemon
+  width: string = '0'
 
   find(value: string){
     this.pokeapi.getPokemonByNameOrId(value.toLowerCase()).subscribe({
@@ -45,7 +46,10 @@ export class PokeBuscaComponent implements OnInit {
       },
       error: (error: any)=>{
         if(error.status === 404){
-          alert("pokemon não existe!")
+          this.width = '300px'
+          setTimeout(()=>{
+            this.width = '0px'
+          }, 1500)
         }
       }
     })
@@ -57,5 +61,4 @@ export class PokeBuscaComponent implements OnInit {
       this.user = null
     })
   }
-
 }

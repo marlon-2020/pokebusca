@@ -4,6 +4,9 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { PokeBuscaComponent } from './pages/welcome/poke-busca/poke-busca.component';
 import { PokedexComponent } from './pages/welcome/pokedex/pokedex.component';
 import { LoginComponent } from './pages/welcome/login/login.component';
+import { ProfileComponent } from './pages/welcome/profile/profile.component';
+import { authGuard } from './guard/auth.guard';
+
 
 const routes: Routes = [
   {
@@ -22,7 +25,10 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: '**', redirectTo: '/', pathMatch: 'full'
+    path: 'profile/:id', component: ProfileComponent, canMatch: [authGuard]
+  },
+  {
+    path: '**', redirectTo: '/login', pathMatch: 'full'
   }
 ];
 

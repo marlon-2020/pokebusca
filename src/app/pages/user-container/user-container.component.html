@@ -2,6 +2,9 @@
     <div class="user-details">
         <p>Usuário: {{ userInput.name | titlecase }}</p>
         <p>E-mail: {{ userInput.email }}</p>
-        <a (click)="desconectar()">desconectar</a>
+        <div class="choices">
+            <a (click)="goToProfile()">perfil</a>
+            <a (click)="desconectar()">desconectar</a>
+        </div>
     </div>
 </div>

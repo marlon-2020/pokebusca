@@ -1,0 +1,21 @@
+@import 'variables'
+@import 'mixins'
+@import 'animations'
+
+.text-container
+    position: fixed
+    right: 10px
+    top: 10px
+    width: 0
+    height: 10px
+    overflow: hidden
+    transition: width 0.2s
+    background: $bege
+    border-radius: 7px
+    z-index: 30
+    .text-alert
+        width: 300px
+        color: $blackDarker
+        font-size: 1.2rem
+        text-align: center
+        padding: 5px

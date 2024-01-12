@@ -17,13 +17,14 @@ export class PokedexComponent implements OnInit {
 
   async ngOnInit() {
 
-    account.get().then((data: any) => {
-      this.user = {
-        id: data.$id,
-        email: data.email,
-        name: data.name
-      }
-    })
+    account.get()
+      .then((data: any) => {
+        this.user = {
+          id: data.$id,
+          email: data.email,
+          name: data.name
+        }
+      })
       .catch(() => {
         this.user = null
       })
@@ -32,8 +33,10 @@ export class PokedexComponent implements OnInit {
     this.pokeapi.getPokemonList(`1017`, '0').subscribe(
       {
         next: (data: any) => {
+          let i = 0
           data.results.forEach((e: any) => {
             this.pokeapi.getPokemonByNameOrId(e.name).subscribe((data: any) => {
+              i++
               this.pokemonList.push(
                 {
                   id: data.id,
@@ -42,6 +45,9 @@ export class PokedexComponent implements OnInit {
                   types: data.types
                 }
               )
+              if(i == 1017){
+                this.pokemonList = this.organizaPorId()
+              }
             })
           });
         },
@@ -50,10 +56,9 @@ export class PokedexComponent implements OnInit {
         }
       }
     )
-    this.pokemonList = await this.organiza()
   }
 
-  async organiza(){
+  organizaPorId(){
     return this.pokemonList.sort((a: any, b:any)=>{
       return a.id - b.id
     })

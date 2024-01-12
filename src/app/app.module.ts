@@ -21,6 +21,9 @@ import { PokemonDetailsComponent } from './pages/welcome/pokemon-details/pokemon
 import { LoginComponent } from './pages/welcome/login/login.component';
 import { SlideFormsDirective } from './directives/slide-forms.directive';
 import { UserContainerComponent } from './pages/user-container/user-container.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ProfileComponent } from './pages/welcome/profile/profile.component';
+import { SuccessComponent } from './pages/success/success.component';
 
 export function tokenGetter() {
   console.log('oi')
@@ -44,6 +47,9 @@ export function tokenGetter() {
     LoginComponent,
     SlideFormsDirective,
     UserContainerComponent,
+    NotFoundComponent,
+    ProfileComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,

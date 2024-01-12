@@ -22,6 +22,5 @@ export class MenuMobileComponent {
     }else{
       this.className = ''
     }
-    console.log(this.className)
   }
 }

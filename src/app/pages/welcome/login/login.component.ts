@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { account, ID } from '../../../../lib/appwrite'
 import { User } from 'src/app/types/user';
@@ -8,17 +8,31 @@ import { User } from 'src/app/types/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   
   constructor(private router: Router){}
   
+  ngOnInit(){
+    account.get()
+      .then((data: any) => {
+        this.user = {
+          id: data.$id,
+          email: data.email,
+          name: data.name
+        }
+      })
+      .catch(() => {
+        this.user = null
+      })
+  }
+
   email: string = ''
   senha: string = ''
   nome: string = ''
   logado: any = null
   choice = ''
-
   user: User|null = null
+  width = '0'
 
   async logar(email: string, senha: string){
     await account.createEmailSession(email, senha)
@@ -60,11 +74,6 @@ export class LoginComponent {
 
   btn(value: string){
     this.choice = value
-    if(value == 'cadastrar'){
-      console.log('irá cadastrar')
-    }else{
-      console.log('irá logar')
-    }
   } 
 
   goToHome(){
