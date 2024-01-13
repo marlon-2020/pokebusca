@@ -4,8 +4,8 @@
     <div class="container" [slideForms]="choice">
         <section class="cadastro-container">
             <h2>Cadastro</h2>
-            <input type="text" name="" id="user-cadastro" [(ngModel)]="email" placeholder="nome..." required>
-            <input type="email" name="" id="email-cadastro" [(ngModel)]="nome" placeholder="seu@email.aqui" required>
+            <input type="text" name="" id="user-cadastro" [(ngModel)]="nome" placeholder="nome..." required>
+            <input type="email" name="" id="email-cadastro" [(ngModel)]="email" placeholder="seu@email.aqui" required>
             <input type="password" name="" id="senha-cadastro" [(ngModel)]="senha" placeholder="senha..." required>
             <input type="button" value="Cadastrar" id="cadastro" (click)="cadastrar(email, nome, senha)">
             <figure class="arrow-container" (click)="btn('login')">

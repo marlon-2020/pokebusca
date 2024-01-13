@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { account } from '../../../lib/appwrite'
 import { User } from 'src/app/types/user';
 import { Router } from '@angular/router';
@@ -13,12 +13,14 @@ export class UserContainerComponent {
   constructor(private router: Router){}
 
   @Input() userInput: User|null = null
+  
 
   desconectar(){
     account.deleteSessions()
     .then(()=>{
       this.userInput = null
       localStorage.removeItem('cookieFallback')
+      localStorage.removeItem('userId')
     })
   }
 

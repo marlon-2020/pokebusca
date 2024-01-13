@@ -35,30 +35,35 @@ export class LoginComponent implements OnInit {
   width = '0'
 
   async logar(email: string, senha: string){
-    await account.createEmailSession(email, senha)
-    this.logado = await account.get()
-    .then((data: any)=>{
-      this.user = {
-        id: data.$id, 
-        email: data.email, 
-        name: data.name
-      }
-    })
-    .then(()=>{
-      this.router.navigate(['/poke-busca'])
-    }).catch((e=>{
-      this.console(e)
-    }))
+    if(localStorage.getItem('cookieFallback')){
+      alert('Já há alguém em sessão, desconecte antes de logar!')
+    }else{
+      await account.createEmailSession(email, senha)
+      this.logado = await account.get()
+      .then((data: any)=>{
+        this.user = {
+          id: data.$id, 
+          email: data.email, 
+          name: data.name
+        }
+        this.console(this.user)
+      })
+      .then(()=>{
+        this.router.navigate(['/poke-busca'])
+      }).catch((e=>{
+        this.console(e)
+      }))
+    }
   }
 
   async cadastrar(email: string, nome: string, senha: string){
       account.create(ID.unique(), email, senha, nome)
-      .then((data: any)=>{
+      .then(()=>{
+        alert('cadastro feito com sucesso!')
+      })
+      .then(()=>{
         this.logar(email, senha)
       })
-      .then(()=>[
-        this.router.navigate(['/poke-busca'])
-      ])
       .catch(error=>{
         this.console(error)
       })
@@ -66,10 +71,6 @@ export class LoginComponent implements OnInit {
   
   console(value: any){
     console.log(value)
-  }
-
-  async deslogar(){
-
   }
 
   btn(value: string){
