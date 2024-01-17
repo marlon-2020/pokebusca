@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
           email: data.email, 
           name: data.name
         }
-        this.console(this.user)
       })
       .then(()=>{
         this.router.navigate(['/poke-busca'])

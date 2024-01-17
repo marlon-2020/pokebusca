@@ -1,0 +1,48 @@
+@import 'mixins'
+@import 'animations'
+@import 'variables'
+
+main
+    min-width: 300px
+    padding: 30px 0px
+    height: 100vh
+    background: $blackDarker
+    @include displayFlex(row, center, center, 0px)
+    .profile-container
+        @include card(100dvw, auto, none, 10px)
+        @include displayFlex(row, center, center, 0px)
+        
+        .profile
+            margin: auto
+            @include card(90dvw, auto, $blackLighter, 10px)
+            @include displayFlex(column, flex-start, center, 30px)
+            flex-wrap: nowrap
+            padding: 10px
+            .title-container
+                h1
+                    font-size: 2rem
+            div
+                @include displayFlex(column, flex-start, center, 30px)
+                label
+                    font-size: 1.7rem
+                input
+                    width: 250px
+                    height: 40px
+                    outline: none
+                    color: $blackDarker
+                    border-radius: 40px
+                    border: none
+                    font-size: 1.5rem
+                    text-align: center
+                .btn-container
+                    @include displayGrid(50px 50px, center, center, 20px)
+                    img
+                            width: 50px
+                            height: 50px
+                            padding: 3px
+                            border-radius: 7px
+                            cursor: pointer
+                    img:nth-of-type(odd)
+                        background: $red
+                    img:nth-of-type(even)
+                        background: $green

@@ -24,6 +24,7 @@ import { UserContainerComponent } from './pages/user-container/user-container.co
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProfileComponent } from './pages/welcome/profile/profile.component';
 import { SuccessComponent } from './pages/success/success.component';
+import { PasswordContainerComponent } from './pages/password-container/password-container.component';
 
 export function tokenGetter() {
   console.log('oi')
@@ -50,6 +51,7 @@ export function tokenGetter() {
     NotFoundComponent,
     ProfileComponent,
     SuccessComponent,
+    PasswordContainerComponent,
   ],
   imports: [
     BrowserModule,

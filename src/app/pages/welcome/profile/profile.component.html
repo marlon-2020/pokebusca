@@ -1,3 +1,35 @@
-<div>
-    <button (click)="console()">Console</button>
-</div>
+<app-transition></app-transition>
+<app-header></app-header>
+<main>
+    <div class="profile-container">
+        <div class="profile">
+            <div class="title-container">
+                <h1>Dados</h1>
+                <h1>do</h1>
+                <h1>Usuário</h1>
+            </div>
+            <div class="nome-container">
+                <label for="id">ID:</label>
+                <input type="text" name="" id="id" value="{{ user?.id }}" disabled>
+            </div>
+            <div class="nome-container">
+                <label for="nome">Nome:</label>
+                <input type="text" name="" id="nome" value="{{ user?.name }}" [disabled]="disableName">
+                <div class="btn-container">
+                    <img src="./assets/images/edit.svg" alt="" (click)="edit(1)">
+                    <img src="./assets/images/check.svg" alt="">
+                </div>
+            </div>
+            <div class="email-container">
+                <label for="email">E-mail:</label>
+                <input type="text" name="" id="email" value="{{ user?.email }}" [disabled]="disableEmail">        
+                <div class="btn-container">
+                    <img src="./assets/images/edit.svg" alt="" (click)="edit(2)">
+                    <img src="./assets/images/check.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <password-container></password-container>
+</main>
+<app-footer></app-footer>

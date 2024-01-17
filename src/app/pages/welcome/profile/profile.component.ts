@@ -9,6 +9,9 @@ import { User } from 'src/app/types/user';
 })
 export class ProfileComponent implements OnInit{
   user: User|null = null
+  disableName: boolean = true
+  disableEmail: boolean = true
+  disablePhone: boolean = true
 
   ngOnInit() {
     account.get()
@@ -23,7 +26,14 @@ export class ProfileComponent implements OnInit{
         this.user = null
       })
   } 
-  console(){
-    console.log(account.get())
+  edit(value: number){
+    switch(value){
+      case 1:
+        this.disableName = !this.disableName
+      break
+      case 2:
+        this.disableEmail = !this.disableEmail
+      break
+    }
   }
 }
